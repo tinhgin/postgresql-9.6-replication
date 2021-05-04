@@ -53,6 +53,9 @@ sed -i "s/#wal_level.*/wal_level = hot_standby/g" postgresql.conf;
 # wait for local flush of WAL to disk
 sed -i "s/#synchronous_commit.*/synchronous_commit = local/g" postgresql.conf;
 
+# 
+sed -i "s/#wal_log_hints.*/wal_log_hints = on/g" postgresql.conf;
+
 # completed WAL segments are sent to archive storage by setting archive_command
 sed -i "s/#archive_mode.*/archive_mode = on/g" postgresql.conf;
 
@@ -309,7 +312,6 @@ EOF
   <summary>Click to expand</summary>
 
 ```bash
-cat << EOF > /etc/keepalived/pg_check.sh
 #!/bin/bash
 
 package=$0
@@ -492,7 +494,6 @@ else
     fi
   fi    
 fi
-EOF
 ```
 </details>
 
